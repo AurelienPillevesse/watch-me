@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
+
+<SplitPane dividerPositions="0.3" stylesheets="@/css/seriesWindow.css" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLSeriesWindowController">
+    <items>
+       <fx:define>
+          <Integer fx:id="moins1" fx:value="-1" />
+      </fx:define>
+      <BorderPane prefHeight="600.0" prefWidth="800.0">
+         <center>
+            <ListView fx:id="listView" prefHeight="400.0" prefWidth="200.0" styleClass="series" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Button fx:id="buttonMostPopular" contentDisplay="CENTER" mnemonicParsing="false" text="Afficher les séries les plus populaires" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </BorderPane.margin></Button>
+         </bottom>
+         <top>
+            <ChoiceBox fx:id="choiceBoxMenu" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
+                  <items>
+                      <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Séries populaires" />
+                          <String fx:value="Mes séries favorites" />
+                      </FXCollections>
+                  </items>
+              </ChoiceBox>
+         </top>
+      </BorderPane>
+      <GridPane alignment="CENTER_LEFT" styleClass="backgroundGrey">
+        <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="180.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="380.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="60.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="240.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="labelName" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="6.0" left="34.0" right="6.0" top="6.0" />
+               </GridPane.margin>
+               <styleClass>
+                  <String fx:value="colorWhite" />
+                  <String fx:value="bold" />
+                  <String fx:value="title" />
+               </styleClass></Label>
+            <Label fx:id="labelOriginalName" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </GridPane.margin>
+               <styleClass>
+                  <String fx:value="italic" />
+                  <String fx:value="colorWhite" />
+               </styleClass></Label>
+            <CheckBox fx:id="checkFav" alignment="CENTER" mnemonicParsing="false" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </GridPane.margin></CheckBox>
+            <Label fx:id="labelLogAs" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </GridPane.margin>
+               <styleClass>
+                  <String fx:value="italic" />
+                  <String fx:value="colorWhite" />
+                  <String fx:value="underline" />
+               </styleClass></Label>
+            <ListView fx:id="listViewSeason" disable="${listView.selectionModel.selectedIndex == moins1}" styleClass="seasons" GridPane.rowIndex="6" GridPane.rowSpan="3">
+               <GridPane.margin>
+                  <Insets bottom="26.0" left="26.0" right="26.0" top="6.0" />
+               </GridPane.margin>
+            </ListView>
+            <ListView fx:id="listViewEpisode" disable="${listViewSeason.selectionModel.selectedIndex == moins1}" onContextMenuRequested="#contextMenuRequest" styleClass="episodes" GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.rowSpan="3">
+               <GridPane.margin>
+                  <Insets bottom="26.0" left="6.0" right="6.0" top="6.0" />
+               </GridPane.margin>
+            </ListView>
+            <ImageView fx:id="imageViewPoster" fitHeight="209.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <image>
+                  <Image url="@../img/default-img.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets bottom="50.0" left="15.0" right="8.0" top="6.0" />
+               </GridPane.margin></ImageView>
+            <Label fx:id="labelOverview" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="colorWhite" textAlignment="JUSTIFY" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets bottom="6.0" left="6.0" right="32.0" top="6.0" />
+               </GridPane.margin>
+            </Label>
+            <Label alignment="CENTER" text="Saisons" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="6.0" left="26.0" right="6.0" top="6.0" />
+               </GridPane.margin>
+               <styleClass>
+                  <String fx:value="colorWhite" />
+                  <String fx:value="subtitle" />
+               </styleClass>
+            </Label>
+            <Label text="Episodes" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </GridPane.margin>
+               <styleClass>
+                  <String fx:value="colorWhite" />
+                  <String fx:value="subtitle" />
+               </styleClass>
+            </Label>
+            <Label fx:id="labelOverviewEpisode" alignment="TOP_LEFT" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="171.0" prefWidth="423.0" styleClass="colorWhite" textAlignment="JUSTIFY" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="8" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets bottom="26.0" left="16.0" right="32.0" top="6.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Détail épisode" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <styleClass>
+                  <String fx:value="colorWhite" />
+                  <String fx:value="subtitle" />
+               </styleClass>
+               <GridPane.margin>
+                  <Insets bottom="6.0" left="16.0" right="6.0" top="6.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="labelNameEpisode" styleClass="title-episode" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets bottom="6.0" left="16.0" right="6.0" top="6.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="labelNumberEpisode" styleClass="episode-number" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets bottom="6.0" left="16.0" right="6.0" top="6.0" />
+               </GridPane.margin>
+            </Label>
+            <ProgressBar fx:id="progress" prefWidth="200.0" progress="0.0" visible="false" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowSpan="9" GridPane.valignment="CENTER" />
+         </children>
+      </GridPane>
+   </items>
+</SplitPane>

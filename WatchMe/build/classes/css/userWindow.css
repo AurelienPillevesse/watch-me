@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'OpenSans';
+    src: url('/font/OpenSans-Light.ttf');
+}
+
+* {
+    -fx-font-family: 'OpenSans';
+}
+
+.title {
+    -fx-font-size: 16px;
+    -fx-text-fill: black;
+}
+
+.bold {
+    -fx-font-weight: bold;
+}
+
+.underline {
+    -fx-underline: true;
+}
+
+.list-view .list-cell {
+    -fx-alignment: CENTER;
+}
+
+.split-pane {
+    -fx-background-image: url("/img/background-connexion.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover, auto;
+    -fx-background-color: transparent;
+}
+
+.users, .users:focused {
+    -fx-border-style: none;
+    -fx-border-color: #D00C18;
+    -fx-background-color: #D00C18, #D00C18, #D00C18;
+}
+
+.users {
+    -fx-control-inner-background: #ea5652;
+    -fx-control-inner-background-alt: #D00C18;
+}
+
+.users .list-cell:empty {
+    -fx-background-color: #D00C18;
+}
+
+.list-view:disabled {
+    -fx-background-color: #D00C18;
+}

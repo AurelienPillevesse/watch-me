@@ -1,0 +1,101 @@
+@font-face {
+    font-family: 'OpenSans';
+    src: url('/font/OpenSans-Light.ttf');
+}
+
+* {
+    -fx-font-family: 'OpenSans';
+}
+
+.check-box > .box,
+.check-box:disabled > .box {
+    -fx-background-image: url("/img/emptyheart.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover, auto;
+    -fx-padding: 4px;
+    -fx-background-color: #1f2025;
+}
+
+.check-box > .box > .mark {
+  -fx-background-color: transparent;
+}
+
+.check-box:selected > .box > .mark {
+  -fx-background-color: transparent;
+}
+
+.check-box:selected > .box {
+    -fx-background-image: url("/img/heart.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover, auto;
+    -fx-padding: 4px;
+    -fx-background-color: #1f2025;
+} 
+
+.sawEpisode {
+    -fx-background-color: #5abc6a;
+    -fx-text-fill: #ffffff;
+}
+
+.bold {
+    -fx-font-weight: bold;
+}
+
+.underline {
+    -fx-underline: true;
+}
+
+.italic {
+    -fx-font-style: italic;
+}
+
+.backgroundGrey {
+    -fx-background-color: #1f2025;
+}
+
+.seasons, .seasons:focused,
+.episodes, .episodes:focused,
+.series, .series:focused {
+    -fx-border-style: none;
+    -fx-border-color: #1f2025;
+    -fx-background-color: #1f2025, #1f2025, #1f2025;
+}
+
+.seasons, .episodes, .series {
+    -fx-control-inner-background: #2c2e35;
+    -fx-control-inner-background-alt: #1f2025;
+}
+
+.seasons .list-cell:empty,
+.episodes .list-cell:empty,
+.series .list-cell:empty {
+    -fx-background-color: #1f2025;
+}
+
+.list-view:disabled {
+    -fx-background-color: #2c2e35;
+}
+
+.title {
+    -fx-font-size: 18px;
+}
+
+.subtitle {
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+}
+
+.title-episode,
+.episode-number {
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #9ea3aa;
+}
+
+.colorWhite {
+    -fx-text-fill: #fff;
+}
+
+BorderPane {
+    -fx-background-color: white;
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.45" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@/css/userWindow.css" xmlns="http://javafx.com/javafx/8.0.71" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLUserWindowController">
+   <items>
+       <fx:define>
+          <Integer fx:id="moins1" fx:value="-1" />
+      </fx:define>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <center>
+            <ListView fx:id="listViewUser" prefHeight="200.0" prefWidth="200.0" styleClass="users" BorderPane.alignment="CENTER" />
+         </center>
+         <bottom>
+            <Button fx:id="buttonAddUser" mnemonicParsing="false" onAction="#addUser" text="Ajouter un nouvel utilisateur" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </BorderPane.margin>
+            </Button>
+         </bottom>
+      </BorderPane>
+      <BorderPane>
+         <center>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" text="Informations à propos de l'utilisateur" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="bold" />
+                        <String fx:value="underline" />
+                        <String fx:value="title" />
+                     </styleClass>
+                  </Label>
+                  <TextField fx:id="textFieldName" alignment="CENTER" GridPane.rowIndex="1" disable="${listViewUser.selectionModel.selectedIndex == moins1}">
+                     <GridPane.margin>
+                        <Insets bottom="6.0" left="16.0" right="16.0" top="6.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField fx:id="textFieldLastName" alignment="CENTER" GridPane.rowIndex="2" disable="${listViewUser.selectionModel.selectedIndex == moins1}">
+                     <GridPane.margin>
+                        <Insets bottom="6.0" left="16.0" right="16.0" top="6.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+            </GridPane>
+         </center>
+         <bottom>
+            <Button fx:id="buttonSelectUser" disable="${listViewUser.selectionModel.selectedIndex == moins1}" mnemonicParsing="false" onAction="#selectUser" text="Accéder à ce compte" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </BorderPane.margin>
+            </Button>
+         </bottom>
+      </BorderPane>
+   </items>
+</SplitPane>
